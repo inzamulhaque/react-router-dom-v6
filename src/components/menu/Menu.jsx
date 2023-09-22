@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function Menu() {
+export default function Menu({ userStatus }) {
   return (
     <>
       <nav
@@ -52,14 +52,16 @@ export default function Menu() {
                 Protected
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                className="md:p-4 py-2 block hover:text-purple-400"
-                to="/private"
-              >
-                Private
-              </NavLink>
-            </li>
+            {userStatus && (
+              <li>
+                <NavLink
+                  className="md:p-4 py-2 block hover:text-purple-400"
+                  to="/private"
+                >
+                  Private
+                </NavLink>
+              </li>
+            )}
             <li>
               <NavLink
                 className="md:p-4 py-2 block hover:text-purple-400 text-purple-500"

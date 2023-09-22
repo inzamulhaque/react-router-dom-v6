@@ -1,3 +1,3 @@
 export default function Private() {
-  return <div>Private</div>;
+  return <div className="text-center">Private</div>;
 }

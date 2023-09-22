@@ -1,13 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Signin = () => {
+const Signin = ({ userData, userStatus }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (userStatus.userStatus == true) {
+      navigate(from, { replace: true });
+    }
+  }, [userStatus.userStatus]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+
+    if (userData?.email == email && userData?.password == password) {
+      alert("success");
+      setEmail("");
+      setPassword("");
+      userStatus.setUserStatus(true);
+    } else {
+      alert("wrong");
+    }
   };
 
   return (

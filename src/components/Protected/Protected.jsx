@@ -1,5 +1,5 @@
 export default function Protected() {
   return (
-    <div>Protected</div>
+    <div className="text-center">Protected</div>
   )
 }
